@@ -33,7 +33,6 @@ export class StockContainerComponent implements OnInit {
     });
   };
 
-
   openDialog = function () {
 
     const dialogRef = this.dialog.open(DialogWithParametersComponent, {
