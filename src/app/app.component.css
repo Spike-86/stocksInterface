@@ -17,3 +17,13 @@ mat-slide-toggle {
   position: absolute;
   right: 5%;
 }
+
+mat-expansion-panel {
+  position: relative;
+}
+
+.deleteStock {
+  position: absolute;
+  right: 1%;
+  bottom: 10%;
+}

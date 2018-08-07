@@ -10,9 +10,13 @@ import { Location } from '@angular/common';
 export class AppComponent {
   constructor(public router: Router, private _location: Location){}
 
+  testList = [];
+
   openCreateComponent = function () {
     this.router.navigateByUrl('/create');
   };
 
-  testList = [];
+  deleteStock = function (name: String) {
+    this.testList = this.testList.filter(el => el.name !== name);
+  };
 }
