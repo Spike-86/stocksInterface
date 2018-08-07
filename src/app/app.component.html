@@ -1,21 +1,80 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div *ngIf="router.url === '/'">
+  <h1 class="mat-headline">Действующие акции</h1>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let list of testList">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Имя акции:
+          {{ list.name }}
+        </mat-panel-title>
+        <mat-panel-description>
+                <mat-slide-toggle
+                  class="example-margin"
+                  [color]="color"
+                  [checked]="checked"
+                  [disabled]="disabled">
+                </mat-slide-toggle>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="example-container">
+        <span class="mat-headline">Перечень условий</span>
+        <table>
+          <thead>
+          <tr>
+            <th>Вид цены</th>
+            <th>Позиция</th>
+            <th>Цена</th>
+          </tr>
+          </thead>
+          <tr *ngFor="let model of list.values">
+            <td>{{ model.options.viewValue }}</td>
+            <td>{{ model.position }}</td>
+            <td>{{ model.cost }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="period">
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerStart" placeholder="Начало акции" disabled>
+          <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerEnd" placeholder="Конец акции" disabled>
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!--<table *ngIf="testList.length > 0">-->
+    <!--<tr>-->
+      <!--<th>Название акции</th>-->
+      <!--<th>Перечень условий</th>-->
+    <!--</tr>-->
+    <!--<tr *ngFor="let list of testList">-->
+      <!--<td>{{ list.name }}</td>-->
+      <!--<td>-->
+        <!--<table>-->
+          <!--<thead>-->
+          <!--<tr>-->
+            <!--<th>Вид цены</th>-->
+            <!--<th>Позиция</th>-->
+            <!--<th>Цена</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tr *ngFor="let model of list.values">-->
+            <!--<td>{{ model.options.viewValue }}</td>-->
+            <!--<td>{{ model.position }}</td>-->
+            <!--<td>{{ model.cost }}</td>-->
+          <!--</tr>-->
+        <!--</table>-->
+      <!--</td>-->
+    <!--</tr>-->
+  <!--</table>-->
+  <button mat-fab  color="primary" class="addStock" (click)="openCreateComponent()">+</button>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
 <router-outlet></router-outlet>

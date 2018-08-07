@@ -1,0 +1,62 @@
+<h1 class="mat-headline">Мастер создания акции</h1>
+
+<mat-form-field class="example-form-field">
+  <input matInput autofocus type="text" placeholder="Название акции" [(ngModel)]="value" [formControl]="emailFormControl" autocomplete="off" (change)="nameVal($event)">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-error *ngIf="emailFormControl.hasError('required')">
+    Название акции <strong>обязательно</strong>
+  </mat-error>
+</mat-form-field>
+
+<button mat-raised-button color="primary" class="addVariants" (click)="addVariants()">Добавить набор</button>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let vars of variants">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ vars.id }}
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <span class="mat-headline">Цены</span>
+
+    <button mat-mini-fab class="addOption" (click)="openDialog()">+</button>
+
+    <div class="example-container">
+
+      <table *ngIf="values.length > 0">
+        <thead>
+        <tr>
+          <th>Вид цены</th>
+          <th>Позиция</th>
+          <th>Цена</th>
+        </tr>
+        </thead>
+        <tr *ngFor="let model of values" (click)="openMe(model)">
+          <td>{{ model.options.viewValue }}</td>
+          <td>{{ model.position }}</td>
+          <td>{{ model.cost }}</td>
+        </tr>
+      </table>
+
+      <ng-container *ngIf="values.length > 0">
+        <span class="mat-headline">Условия, при которых работает данный набор:</span>
+        <button mat-mini-fab class="addOption" (click)="openDialog()"> + </button>
+      </ng-container>
+
+      <button mat-raised-button color="warn" class="deleteVariants" (click)="deleteVariants(vars.id)">Удалить набор</button>
+
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<button mat-raised-button (click)="backPage()">Назад</button>
+<ng-container *ngIf="!emailFormControl.hasError('required')">
+  <button mat-flat-button *ngIf="variants.length > 0" class="saveStock" (click)="saveStock()">Сохранить акцию</button>
+</ng-container>
+

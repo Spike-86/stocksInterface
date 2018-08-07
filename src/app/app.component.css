@@ -1,0 +1,19 @@
+.addStock {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+}
+
+.mat-headline {
+  text-align: center;
+}
+
+.example-container table {
+  width: 100%;
+  text-align: center;
+}
+
+mat-slide-toggle {
+  position: absolute;
+  right: 5%;
+}

@@ -1,0 +1,53 @@
+<!--<mat-form-field>-->
+  <!--<mat-select placeholder="Выберите опцию" (selectionChange)="optionValue($event)" [(value)]="selected">-->
+    <!--<mat-option *ngFor="let option of aviableOptions" [value]="option.value">-->
+      <!--{{option.viewValue}}-->
+    <!--</mat-option>-->
+  <!--</mat-select>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field *ngIf="selected === 2 || selected === 3 || selected === 4">-->
+  <!--<mat-select placeholder="Выберите позицию" (selectionChange)="positionValue($event.value)">-->
+    <!--<mat-option *ngFor="let test of options" [value]="test">-->
+      <!--{{ test }}-->
+    <!--</mat-option>-->
+  <!--</mat-select>-->
+<!--</mat-form-field>-->
+<!--<ng-container *ngIf="selected === 1">-->
+  <!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput type="number" class="viewInput" (change)="numbValue($event.target.value)">-->
+  <!--</mat-form-field>-->
+<!--</ng-container>-->
+<!--<mat-dialog-actions>-->
+  <!--<button mat-button [mat-dialog-close]>Отмена</button>-->
+  <!--&lt;!&ndash;<button mat-button [mat-dialog-close]="values">Сохранить</button>&ndash;&gt;-->
+  <!--<button mat-button (click)="submit()">Сохранить</button>-->
+<!--</mat-dialog-actions>-->
+
+
+<mat-form-field>
+  <mat-select placeholder="Выберите опцию" [(ngModel)]="model.options" [(value)]="model.options">
+    <mat-option *ngFor="let option of aviableOptions" [value]="option">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="model.options.value !== 0 && model.options.value !== 1">
+  <mat-select placeholder="Выберите позицию" [(ngModel)]="model.position">
+    <mat-option *ngFor="let test of options" [value]="test">
+      {{ test }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<ng-container *ngIf="model.options.value !== 0">
+  <mat-form-field class="example-full-width">
+    <input matInput type="number" class="viewInput" [(ngModel)]="model.cost" placeholder="Установите цену">
+  </mat-form-field>
+</ng-container>
+
+<mat-dialog-actions>
+<button mat-button [mat-dialog-close]>Отмена</button>
+<button mat-button (click)="submit()">Сохранить</button>
+</mat-dialog-actions>
+
