@@ -24,11 +24,11 @@
 
     <span class="mat-headline">Цены</span>
 
-    <button mat-mini-fab class="addOption" (click)="openDialog()">+</button>
+    <button mat-mini-fab class="addOption" (click)="openDialog(vars.id)">+</button>
 
     <div class="example-container">
 
-      <table *ngIf="values.length > 0">
+      <table *ngIf="variants[vars.id - 1].sets.length > 0">
         <thead>
         <tr>
           <th>Вид цены</th>
@@ -36,14 +36,14 @@
           <th>Цена</th>
         </tr>
         </thead>
-        <tr *ngFor="let model of values" (click)="openMe(model)">
+        <tr *ngFor="let model of variants[vars.id - 1].sets" (click)="openMe(model)">
           <td>{{ model.options.viewValue }}</td>
           <td>{{ model.position }}</td>
           <td>{{ model.cost }}</td>
         </tr>
       </table>
 
-      <ng-container *ngIf="values.length > 0">
+      <ng-container *ngIf="variants[vars.id - 1].sets.length > 0">
         <span class="mat-headline">Условия, при которых работает данный набор:</span>
         <button mat-mini-fab class="addOption" (click)="openDialog()"> + </button>
       </ng-container>

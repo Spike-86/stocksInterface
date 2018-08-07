@@ -15,10 +15,8 @@ import {DialogWithParametersComponent} from '../dialog-with-parameters/dialog-wi
 export class StockContainerComponent implements OnInit {
 
   variants = [];
-  value = '';
-  nameStock = '';
-  values = [];
-
+  value: String;
+  nameStock: String;
 
   emailFormControl = new FormControl('', [
     Validators.required
@@ -29,11 +27,12 @@ export class StockContainerComponent implements OnInit {
 
   addVariants = function () {
     this.variants.push({
-      id: this.variants.length + 1
+      id: this.variants.length + 1,
+      sets: []
     });
   };
 
-  openDialog = function () {
+  openDialog = function (id) {
 
     const dialogRef = this.dialog.open(DialogWithParametersComponent, {
       disableClose: true,
@@ -45,7 +44,7 @@ export class StockContainerComponent implements OnInit {
       this.dialogResult = result;
 
       if (result !== undefined) {
-        this.values.push(result);
+        this.variants[id - 1].sets.push(result);
       }
 
     });
@@ -81,8 +80,9 @@ export class StockContainerComponent implements OnInit {
     this.myApp.testList.push({
       name: this.nameStock,
       variants: this.variants,
-      values: this.values,
     });
+
+    console.log(this.myApp.testList);
 
     this.router.navigateByUrl('/');
   };

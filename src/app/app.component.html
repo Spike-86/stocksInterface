@@ -19,20 +19,32 @@
       </mat-expansion-panel-header>
       <div class="example-container">
         <span class="mat-headline">Перечень условий</span>
-        <table>
-          <thead>
-          <tr>
-            <th>Вид цены</th>
-            <th>Позиция</th>
-            <th>Цена</th>
-          </tr>
-          </thead>
-          <tr *ngFor="let model of list.values">
-            <td>{{ model.options.viewValue }}</td>
-            <td>{{ model.position }}</td>
-            <td>{{ model.cost }}</td>
-          </tr>
-        </table>
+            <table>
+              <thead>
+              <tr>
+                <th>ID набора</th>
+                <th>Вид цены</th>
+                <th>Позиция</th>
+                <th>Цена</th>
+              </tr>
+              </thead>
+              <tr *ngFor="let model of list.variants">
+                <td>
+                  {{model.id}}
+                </td>
+              <td colspan="3">
+                <table style="width: 100%">
+                  <tr *ngFor="let opt of model.sets">
+                    <td>{{ opt.options.viewValue }}</td>
+                    <td>{{ opt.position }}</td>
+                    <td>{{ opt.cost }}</td>
+                  </tr>
+                </table>
+              </td>
+
+              </tr>
+            </table>
+
       </div>
       <div class="period">
         <mat-form-field>
