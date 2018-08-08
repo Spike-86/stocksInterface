@@ -22,8 +22,11 @@ mat-expansion-panel {
   position: relative;
 }
 
-.deleteStock {
-  position: absolute;
-  right: 1%;
-  bottom: 10%;
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actionButtons button {
+  margin: 0 10px;
 }

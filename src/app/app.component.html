@@ -57,7 +57,10 @@
           <mat-datepicker #pickerEnd disabled="false"></mat-datepicker>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="warn" class="deleteStock" (click)="deleteStock(list.name)">Удалить акцию</button>
+      <div class="actionButtons">
+        <button mat-raised-button (click)="editStock(list)">Редактировать акцию</button>
+        <button mat-raised-button color="warn" class="deleteStock" (click)="deleteStock(list.name)">Удалить акцию</button>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 

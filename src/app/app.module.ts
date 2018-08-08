@@ -15,6 +15,7 @@ import { MatNativeDateModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ConditionsComponent } from './conditions/conditions.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [

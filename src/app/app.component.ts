@@ -12,13 +12,17 @@ export class AppComponent {
 
   testList = [];
 
-  openCreateComponent = function () {
+  openCreateComponent() {
     this.router.navigateByUrl('/create');
   };
 
-  deleteStock = function (name: String) {
+  deleteStock(name: String) {
     this.testList = this.testList.filter(el => el.name !== name);
   };
+
+  editStock(obj) {
+    console.log(obj);
+  }
 
   stop(e) {
     e.stopPropagation();
