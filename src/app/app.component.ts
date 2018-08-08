@@ -19,4 +19,8 @@ export class AppComponent {
   deleteStock = function (name: String) {
     this.testList = this.testList.filter(el => el.name !== name);
   };
+
+  stop(e) {
+    e.stopPropagation();
+  }
 }

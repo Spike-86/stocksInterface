@@ -14,12 +14,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StockContainerComponent,
-    DialogWithParametersComponent
+    DialogWithParametersComponent,
+    ConditionsComponent
 
   ],
   imports: [

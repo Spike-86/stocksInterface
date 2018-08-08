@@ -34,12 +34,16 @@
           <th>Вид цены</th>
           <th>Позиция</th>
           <th>Цена</th>
+          <th></th>
         </tr>
         </thead>
-        <tr *ngFor="let model of variants[vars.id - 1].sets" (click)="openMe(model)">
+        <tr *ngFor="let model of variants[vars.id - 1].sets; let i = index;" (click)="openDialog(i, model, vars.id - 1)">
           <td>{{ model.options.viewValue }}</td>
           <td>{{ model.position }}</td>
           <td>{{ model.cost }}</td>
+          <td>
+            <mat-icon color="warn" (click)="deleteModel($event, i, vars.id - 1)">remove_circle</mat-icon>
+          </td>
         </tr>
       </table>
 

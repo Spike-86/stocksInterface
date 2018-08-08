@@ -32,20 +32,30 @@ export class StockContainerComponent implements OnInit {
     });
   };
 
-  openDialog = function (id) {
+  openDialog = function (id, data, ids) {
 
     const dialogRef = this.dialog.open(DialogWithParametersComponent, {
       disableClose: true,
       height: '300px',
       minWidth: '400px',
+      data: data !== undefined ? data : null,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.dialogResult = result;
 
-      if (result !== undefined) {
+      console.log(result);
+      console.log(this.variants);
+
+      if (result !== undefined && data === undefined) {
         this.variants[id - 1].sets.push(result);
       }
+
+      if (result !== undefined && data !== undefined) {
+        this.variants[ids].sets[id] = result;
+      }
+
+      console.log(this.variants);
 
     });
 
@@ -64,11 +74,11 @@ export class StockContainerComponent implements OnInit {
     });
   }
 
-  deleteVariants = function (id: Number) {
+  deleteVariants(id: Number) {
     this.variants = this.variants.filter(el => el.id !== id);
   };
 
-  backPage = function () {
+  backPage() {
     this._location.back();
   };
 
@@ -76,7 +86,7 @@ export class StockContainerComponent implements OnInit {
     this.nameStock = val.target.value;
   };
 
-  saveStock = function () {
+  saveStock() {
     this.myApp.testList.push({
       name: this.nameStock,
       variants: this.variants,
@@ -86,6 +96,11 @@ export class StockContainerComponent implements OnInit {
 
     this.router.navigateByUrl('/');
   };
+
+  deleteModel(e, num, count) {
+    e.stopPropagation();
+    this.variants[count].sets.splice(num, 1);
+  }
 
 
   ngOnInit() {
