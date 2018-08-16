@@ -1,0 +1,18 @@
+<h1>List of stocks</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let stock of stocks">
+    <td>{{ stock.id }}</td>
+    <td>{{ stock.name }}</td>
+  </tr>
+</table>
+
+<button mat-mini-fab color="primary" class="addButton" (click)="createStock()">
+  <mat-icon>add_circle</mat-icon>
+</button>

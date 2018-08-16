@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "First Stock",
+    "variants": "[]",
+    "applicability": "[]",
+    "f1": "false",
+    "f2": "true"
+  },
+  {
+    "id": "2",
+    "name": "I love Belarus",
+    "variants": "[]",
+    "applicability": "[]",
+    "f1": "false",
+    "f2": "true"
+  },
+  {
+    "id": "3",
+    "name": "Happy me!",
+    "variants": "[]",
+    "applicability": "[]",
+    "f1": "false",
+    "f2": "true"
+  }
+]
