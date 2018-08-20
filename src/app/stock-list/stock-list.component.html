@@ -4,12 +4,22 @@
   <thead>
   <tr>
     <th>ID</th>
-    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Full description</th>
+    <th>fclientCond</th>
+    <th>fregionCoef</th>
+    <th>fsapShare</th>
   </tr>
   </thead>
-  <tr *ngFor="let stock of stocks">
+  <tr *ngFor="let stock of stocks" (click)="editStock(stock)">
     <td>{{ stock.id }}</td>
-    <td>{{ stock.name }}</td>
+    <td>{{ stock.descr }}</td>
+    <td>{{ stock.campaignType }}</td>
+    <td>{{ stock.fullDesc }}</td>
+    <td>{{ stock.fclientCond }}</td>
+    <td>{{ stock.fregionCoef }}</td>
+    <td>{{ stock.fsapShare }}</td>
   </tr>
 </table>
 

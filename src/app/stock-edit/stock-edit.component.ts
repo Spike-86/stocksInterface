@@ -14,7 +14,7 @@ export class StockEditComponent implements OnInit {
   constructor(
     private routesService: RoutesService,
     private route: ActivatedRoute,
-    private stockService: StockService
+    private stockService: StockService,
   ) {}
 
   stock: Stock;
@@ -23,15 +23,14 @@ export class StockEditComponent implements OnInit {
     this.routesService.goBack();
   }
 
-  setActive(stock: Stock) {
-    this.stock = stock;
-  }
 
   ngOnInit() {
-    this.stockService.getStockList()
-      .subscribe(
-        data => this.stock = data[0]
-      );
+    // this.stockService.getStockList()
+    //   .subscribe(
+    //     data => this.stock = data[0]
+    //   );
+
+    this.stock = this.stockService.getSelectedStock();
   }
 
 }

@@ -23,14 +23,25 @@ export class StockListComponent implements OnInit {
 
   stocks: Array<Stock> = [];
 
+
+
   createStock() {
     this.router.navigate(['/create', this.stocks[0].id]);
+  }
+
+  editStock(stock) {
+    this.stockService.testStock = stock;
+    this.router.navigateByUrl('/editStock');
+
   }
 
   ngOnInit() {
     this.stockService.getStockList()
       .subscribe(
-        (data) => this.stocks = data
+        (data) => {
+          console.log(data);
+          this.stocks = data;
+        }
       );
   }
 

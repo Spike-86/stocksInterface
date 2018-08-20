@@ -7,6 +7,7 @@ import {StockListComponent} from './stock-list/stock-list.component';
 const routes: Routes = [
   {path: '', component: StockListComponent},
   {path: 'create/:id', component: StockEditComponent},
+  {path: 'editStock', component: StockEditComponent},
 ];
 
 @NgModule({
