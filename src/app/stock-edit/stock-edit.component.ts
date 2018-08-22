@@ -32,6 +32,9 @@ export class StockEditComponent implements OnInit {
     this.routesService.goBack();
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   ngOnInit() {
     this.stockService.getStockList()

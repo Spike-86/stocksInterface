@@ -47,6 +47,10 @@
 
 <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="pageEvent = $event"  [pageSize]="pageSize"></mat-paginator>
 
+<mat-form-field class="findInput">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск по вхождению">
+</mat-form-field>
+
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="pricePart">
