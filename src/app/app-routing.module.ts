@@ -4,10 +4,11 @@ import {Routes, RouterModule} from '@angular/router';
 import {StockEditComponent} from './stock-edit/stock-edit.component';
 import {StockListComponent} from './stock-list/stock-list.component';
 
+
 const routes: Routes = [
   {path: '', component: StockListComponent},
-  {path: 'create/:id', component: StockEditComponent},
-  {path: 'editStock', component: StockEditComponent},
+  {path: 'create', component: StockEditComponent},
+  {path: 'editStock/:id', component: StockEditComponent},
 ];
 
 @NgModule({

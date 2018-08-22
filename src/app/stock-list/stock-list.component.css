@@ -1,4 +1,8 @@
 tr:hover {
-  background-color: darkgray;
+  background-color: yellow;
   cursor: pointer;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
 }

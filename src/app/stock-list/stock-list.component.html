@@ -1,28 +1,66 @@
 <h1>List of stocks</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Full description</th>
-    <th>fclientCond</th>
-    <th>fregionCoef</th>
-    <th>fsapShare</th>
-  </tr>
-  </thead>
-  <tr *ngFor="let stock of stocks" (click)="editStock(stock)">
-    <td>{{ stock.id }}</td>
-    <td>{{ stock.descr }}</td>
-    <td>{{ stock.campaignType }}</td>
-    <td>{{ stock.fullDesc }}</td>
-    <td>{{ stock.fclientCond }}</td>
-    <td>{{ stock.fregionCoef }}</td>
-    <td>{{ stock.fsapShare }}</td>
-  </tr>
+<!--<table>-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th>ID</th>-->
+    <!--<th>Description</th>-->
+    <!--<th>Full description</th>-->
+    <!--<th>fclientCond</th>-->
+    <!--<th>fregionCoef</th>-->
+    <!--<th>fsapShare</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tr *ngFor="let stock of stocks" (click)="editStock(stock)">-->
+    <!--<td>{{ stock.id }}</td>-->
+    <!--<td>{{ stock.descr }}</td>-->
+    <!--<td>{{ stock.fullDesc }}</td>-->
+    <!--<td>{{ stock.fclientCond }}</td>-->
+    <!--<td>{{ stock.fregionCoef }}</td>-->
+    <!--<td>{{ stock.fsapShare }}</td>-->
+  <!--</tr>-->
+<!--</table>-->
+
+<mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="pageEvent = $event"  [pageSize]="pageSize"></mat-paginator>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="descr">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.descr}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fullDesc">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Full description </th>
+    <td mat-cell *matCellDef="let element"> {{element.fullDesc}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fclientCond">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> fclientCond </th>
+    <td mat-cell *matCellDef="let element"> {{element.fclientCond}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fregionCoef">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> fregionCoef </th>
+    <td mat-cell *matCellDef="let element"> {{element.fregionCoef}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fsapShare">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> fsapShare </th>
+    <td mat-cell *matCellDef="let element"> {{element.fsapShare}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editStock(row)"></tr>
+
+
 </table>
 
-<button mat-mini-fab color="primary" class="addButton" (click)="createStock()">
-  <mat-icon>add_circle</mat-icon>
-</button>
+<!--<button mat-mini-fab color="primary" class="addButton" (click)="createStock()">-->
+  <!--<mat-icon>add_circle</mat-icon>-->
+<!--</button>-->

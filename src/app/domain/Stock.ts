@@ -13,6 +13,7 @@ export class Stock {
   fullDesc: string;
   fvisible: boolean;
   id: number;
+  variants: any;
 
   // name: string;
   // variants: Array<Variant>;
