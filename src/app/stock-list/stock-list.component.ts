@@ -6,6 +6,7 @@ import {RoutesService} from '../services/routes.service';
 import {StockEditComponent} from '../stock-edit/stock-edit.component';
 import {Router} from '@angular/router';
 import {MatPaginator, MatSort, MatTableDataSource, PageEvent} from '@angular/material';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-stock-list',
@@ -26,6 +27,8 @@ export class StockListComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSize = 10;
   pageEvent: PageEvent;
+  date = new FormControl(new Date());
+  selected = 'option2';
 
 
   displayedColumns: string[] = ['id', 'descr', 'fullDesc', 'fclientCond', 'fregionCoef', 'fsapShare'];

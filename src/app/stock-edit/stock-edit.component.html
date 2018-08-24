@@ -1,7 +1,7 @@
 <button mat-flat-button color="primary" class="backButton" (click)="StockListRoute()">
-  <mat-icon>keyboard_backspace</mat-icon>
-  Back to stock list
-</button>
+    <mat-icon>keyboard_backspace</mat-icon>
+    Back to stock list
+  </button>
 
 <table *ngIf="stock">
   <thead>
@@ -24,74 +24,92 @@
   </tr>
 </table>
 
-<!--<table *ngIf="stock?.variants">-->
-  <!--<tr>-->
-    <!--<th>Тип элемента позиции</th>-->
-    <!--<th>clientRlshnType</th>-->
-    <!--<th>conditionId</th>-->
-    <!--<th>factorId</th>-->
-    <!--<th>priceLevel</th>-->
-    <!--<th>value</th>-->
-    <!--<th>valueType</th>-->
-  <!--</tr>-->
-  <!--<tr *ngFor="let variant of stock.variants">-->
-    <!--<td>{{ variant.pricePart }}</td>-->
-    <!--<td>{{ variant.clientRlshnType }}</td>-->
-    <!--<td>{{ variant.conditionId }}</td>-->
-    <!--<td>{{ variant.factorId }}</td>-->
-    <!--<td>{{ variant.priceLevel }}</td>-->
-    <!--<td>{{ variant.value }}</td>-->
-    <!--<td>{{ variant.valueType }}</td>-->
-  <!--</tr>-->
-<!--</table>-->
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let gr of groupingStocks">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        conditionId: {{ gr }}
+      </mat-panel-title>
+      <mat-panel-description>
+        Наборы акций
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <table>
+      <tr>
+        <th>Тип элемента позиции</th>
+        <th>clientRlshnType</th>
+        <th>conditionId</th>
+        <th>factorId</th>
+        <th>priceLevel</th>
+        <th>value</th>
+        <th>valueType</th>
+      </tr>
+      <tr *ngFor="let st of dataS[gr]">
+        <td>{{ st.pricePart }}</td>
+        <td>{{ st.clientRlshnType }}</td>
+        <td>{{ st.conditionId }}</td>
+        <td>{{ st.factorId }}</td>
+        <td>{{ st.priceLevel }}</td>
+        <td>{{ st.value }}</td>
+        <td>{{ st.valueType }}</td>
+      </tr>
+    </table>
+
+    <!--<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">-->
+
+    <!--<ng-container matColumnDef="pricePart">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Тип элемента позиции </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.pricePart}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="clientRlshnType">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> clientRlshnType </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.clientRlshnType}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="conditionId">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> conditionId </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.conditionId}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="factorId">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> factorId </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.factorId}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="priceLevel">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> priceLevel </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.priceLevel}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="value">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> value </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.value}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="valueType">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> valueType </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.valueType}} </td>-->
+    <!--</ng-container>-->
+
+    <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+    <!--<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+
+
+    <!--</table>-->
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
 
 <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="pageEvent = $event"  [pageSize]="pageSize"></mat-paginator>
 
-<mat-form-field class="findInput">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск по вхождению">
-</mat-form-field>
-
-<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="pricePart">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Тип элемента позиции </th>
-    <td mat-cell *matCellDef="let element"> {{element.pricePart}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="clientRlshnType">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> clientRlshnType </th>
-    <td mat-cell *matCellDef="let element"> {{element.clientRlshnType}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="conditionId">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> conditionId </th>
-    <td mat-cell *matCellDef="let element"> {{element.conditionId}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="factorId">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> factorId </th>
-    <td mat-cell *matCellDef="let element"> {{element.factorId}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="priceLevel">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> priceLevel </th>
-    <td mat-cell *matCellDef="let element"> {{element.priceLevel}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="value">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> value </th>
-    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="valueType">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> valueType </th>
-    <td mat-cell *matCellDef="let element"> {{element.valueType}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <!--<mat-form-field class="findInput">-->
+    <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск по вхождению">-->
+  <!--</mat-form-field>-->
 
 
-</table>
 
 

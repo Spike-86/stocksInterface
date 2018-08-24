@@ -6,3 +6,56 @@ tr:hover {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+.stocksContainer {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: 45%;
+  margin: 10px 5px;
+}
+
+.leftCard {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.leftCard mat-card-content {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*max-width: 500px;*/
+}
+
+aside {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+
+  margin: 0 auto;
+}
+
+.slideContainer {
+  padding: 5px 0;
+}
+
+.stocksPeriodContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stocksCountryContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stocksClientContainer {
+  display: flex;
+  justify-content: space-around;
+}
+

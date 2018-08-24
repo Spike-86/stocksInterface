@@ -13,10 +13,17 @@ import {
   MatPaginatorModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSortModule
+  MatSortModule,
+  MatExpansionModule,
+  MatCardModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule
 } from '@angular/material';
 import { StockEditComponent } from './stock-edit/stock-edit.component';
 import { StockListComponent } from './stock-list/stock-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -37,7 +44,14 @@ import { StockListComponent } from './stock-list/stock-list.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [StockEditComponent],
   bootstrap: [AppComponent]

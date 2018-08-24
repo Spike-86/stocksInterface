@@ -1,4 +1,63 @@
-<h1>List of stocks</h1>
+<!--<h1>List of stocks</h1>-->
+<div *ngFor="let stock of stocks" class="stocksContainer">
+  <mat-card class="leftCard">
+    <mat-card-header (click)="editStock(stock)">
+      <mat-card-title><h1>{{ stock.descr }}</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ stock.fullDesc }}</mat-card-content>
+    <aside>
+      <div class="slideContainer">
+        {{ stock.fclientCond }}
+        <mat-slide-toggle
+          class="example-margin"
+          [color]="color"
+          [checked]="stock.fclientCond"
+          [disabled]="!stock.fclientCond">
+        </mat-slide-toggle>
+      </div>
+    </aside>
+  </mat-card>
+
+  <mat-card>
+    <div class="stocksPeriodContainer">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Начало акции" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Конец акции" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="stocksCountryContainer">
+      <h4>Страна</h4>
+      <mat-form-field>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="stocksClientContainer">
+      <h4>Клиент</h4>
+      <mat-form-field>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+</div>
+
 
 <!--<table>-->
   <!--<thead>-->
@@ -21,45 +80,45 @@
   <!--</tr>-->
 <!--</table>-->
 
-<mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="pageEvent = $event"  [pageSize]="pageSize"></mat-paginator>
+<!--<mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="pageEvent = $event"  [pageSize]="pageSize"></mat-paginator>-->
 
-<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+<!--<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">-->
 
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="id">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.id}} </td>-->
+  <!--</ng-container>-->
 
-  <ng-container matColumnDef="descr">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-    <td mat-cell *matCellDef="let element"> {{element.descr}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="descr">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.descr}} </td>-->
+  <!--</ng-container>-->
 
-  <ng-container matColumnDef="fullDesc">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Full description </th>
-    <td mat-cell *matCellDef="let element"> {{element.fullDesc}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="fullDesc">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Full description </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.fullDesc}} </td>-->
+  <!--</ng-container>-->
 
-  <ng-container matColumnDef="fclientCond">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> fclientCond </th>
-    <td mat-cell *matCellDef="let element"> {{element.fclientCond}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="fclientCond">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> fclientCond </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.fclientCond}} </td>-->
+  <!--</ng-container>-->
 
-  <ng-container matColumnDef="fregionCoef">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> fregionCoef </th>
-    <td mat-cell *matCellDef="let element"> {{element.fregionCoef}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="fregionCoef">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> fregionCoef </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.fregionCoef}} </td>-->
+  <!--</ng-container>-->
 
-  <ng-container matColumnDef="fsapShare">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> fsapShare </th>
-    <td mat-cell *matCellDef="let element"> {{element.fsapShare}} </td>
-  </ng-container>
+  <!--<ng-container matColumnDef="fsapShare">-->
+    <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> fsapShare </th>-->
+    <!--<td mat-cell *matCellDef="let element"> {{element.fsapShare}} </td>-->
+  <!--</ng-container>-->
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editStock(row)"></tr>
+  <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+  <!--<tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editStock(row)"></tr>-->
 
 
-</table>
+<!--</table>-->
 
 <!--<button mat-mini-fab color="primary" class="addButton" (click)="createStock()">-->
   <!--<mat-icon>add_circle</mat-icon>-->

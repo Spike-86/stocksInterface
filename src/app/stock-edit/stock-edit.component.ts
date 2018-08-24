@@ -4,6 +4,8 @@ import {Stock} from '../domain/Stock';
 import {StockService} from '../services/stock.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatPaginator, MatSort, MatTableDataSource, PageEvent} from '@angular/material';
+import * as _ from 'underscore';
+import {any} from 'codelyzer/util/function';
 
 
 @Component({
@@ -20,10 +22,10 @@ export class StockEditComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSize = 10;
   pageEvent: PageEvent;
-
-
+  groupingStocks;
   displayedColumns: string[] = ['pricePart', 'clientRlshnType', 'conditionId', 'factorId', 'priceLevel', 'value', 'valueType'];
   dataSource;
+  dataS;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,7 +45,11 @@ export class StockEditComponent implements OnInit {
 
         this.stockService.getStockVariants(this.route.snapshot.params.id)
           .subscribe((data) => {
-            console.log(data);
+            // console.log(data);
+            // console.log(_.groupBy(data, 'conditionId'));
+            this.groupingStocks = Object.keys(_.groupBy(data, 'conditionId'));
+            this.dataS = _.groupBy(data, 'conditionId');
+            console.log(this.dataS);
             this.stock.variants = data;
             this.dataSource = new MatTableDataSource(this.stock.variants);
             this.dataSource.paginator = this.paginator;
