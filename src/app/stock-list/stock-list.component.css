@@ -8,13 +8,17 @@ th.mat-sort-header-sorted {
 }
 
 .stocksContainer {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  background-color: lightgray;
+  padding: 20px;
 }
 
 mat-card {
-  width: 45%;
-  margin: 10px 5px;
+  /*width: 45%;*/
+  /*margin: 10px 5px;*/
+  height: 100px;
 }
 
 .leftCard {
@@ -59,3 +63,16 @@ aside {
   justify-content: space-around;
 }
 
+
+.stocksContainer mat-card:last-child {
+  /*display: none;*/
+}
+
+mat-expansion-panel {
+  position: relative;
+}
+
+.mat-expansion-panel-content {
+  position: absolute;
+  z-index: 1;
+}

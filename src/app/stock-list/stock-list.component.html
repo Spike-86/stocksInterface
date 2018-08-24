@@ -1,61 +1,79 @@
 <!--<h1>List of stocks</h1>-->
-<div *ngFor="let stock of stocks" class="stocksContainer">
-  <mat-card class="leftCard">
-    <mat-card-header (click)="editStock(stock)">
-      <mat-card-title><h1>{{ stock.descr }}</h1></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>{{ stock.fullDesc }}</mat-card-content>
-    <aside>
-      <div class="slideContainer">
-        {{ stock.fclientCond }}
-        <mat-slide-toggle
-          class="example-margin"
-          [color]="color"
-          [checked]="stock.fclientCond"
-          [disabled]="!stock.fclientCond">
-        </mat-slide-toggle>
-      </div>
-    </aside>
-  </mat-card>
+<div class="stocksContainer">
+  <div *ngFor="let stock of stocks">
 
-  <mat-card>
-    <div class="stocksPeriodContainer">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker1" placeholder="Начало акции" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker2" placeholder="Конец акции" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-    </div>
+    <mat-card class="leftCard">
+      <mat-card-header (click)="editStock(stock)">
+        <mat-card-title>
+          <h4>{{ stock.descr }}</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ stock.fullDesc }}</mat-card-content>
+      <aside>
+        <div class="slideContainer">
+          {{ stock.fclientCond }}
+          <mat-slide-toggle
+            class="example-margin"
+            [color]="color"
+            [checked]="stock.fclientCond"
+            [disabled]="!stock.fclientCond">
+          </mat-slide-toggle>
+        </div>
+      </aside>
+    </mat-card>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Personal data
+          </mat-panel-title>
+          <mat-panel-description>
+            Type your name and age
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-    <div class="stocksCountryContainer">
-      <h4>Страна</h4>
-      <mat-form-field>
-        <mat-select [(value)]="selected">
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+        <mat-card>
+          <div class="stocksPeriodContainer">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" placeholder="Начало акции" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker2" placeholder="Конец акции" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
 
-    <div class="stocksClientContainer">
-      <h4>Клиент</h4>
-      <mat-form-field>
-        <mat-select [(value)]="selected">
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </mat-card>
+          <div class="stocksCountryContainer">
+            <h4>Страна</h4>
+            <mat-form-field>
+              <mat-select [(value)]="selected">
+                <mat-option>None</mat-option>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="stocksClientContainer">
+            <h4>Клиент</h4>
+            <mat-form-field>
+              <mat-select [(value)]="selected">
+                <mat-option>None</mat-option>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>
 
 
