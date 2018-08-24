@@ -13,6 +13,10 @@ th.mat-sort-header-sorted {
   grid-gap: 8px;
   background-color: lightgray;
   padding: 20px;
+
+  height: 90vh;
+  overflow: auto;
+
 }
 
 mat-card {
